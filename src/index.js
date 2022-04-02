@@ -8,4 +8,6 @@ function showTemplate(template, data) {
 $(document).ready(function () {
   var source = $('#work-exp-template').html();
   work_exp_template = Handlebars.compile(source);
+
+  showTemplate(work_exp_template, jobs);
 });

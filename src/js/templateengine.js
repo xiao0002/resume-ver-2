@@ -9,3 +9,4 @@ $(document).ready(function () {
   work_exp_template = Handlebars.compile(source);
   showTemplate('#work-exp-content', work_exp_template, workexp);
 });
+$('#testtest').addItems();

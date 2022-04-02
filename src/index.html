@@ -5,17 +5,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Title -->
-    <title>Bootstrap 5 with Masonry!</title>
-    <!-- Scripts -->
-    <script src="/index.js"></script>
-    <script src="/workexp.js"></script>
-    <!-- Bootstrap CSS -->
+    <title>resume!</title>
+    <!-- JS modules -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
       crossorigin="anonymous"
     />
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
+    <!-- Scripts -->
+    <script src="js/templateengine.js"></script>
+    <script src="js/workexp.js"></script>
   </head>
 
   <body>
@@ -75,44 +83,9 @@
 
       <div
         class="row row-cols-1 row-cols-md-2 g-4"
-        data-masonry='{"percentPosition": true,  "itemSelector": ".col" }'
+        data-masonry='{"percentPosition": true,  "itemSelector": ".col", "initLayout": true, "resize": true}'
       >
-        <div class="col">
-          <h2>Work Experience</h2>
-          <h4>Intern</h4>
-          <h5>DF Automation & Robotics Sdn. Bhd.</h5>
-          <h6>Oct 2020 – Jan 2021</h6>
-          <ul>
-            <li>
-              Assisted in developing AGILE burndown chart data visualization
-              from JSON format
-            </li>
-            <li>
-              Assisted in developing a vision-based solution to automate
-              Stopping Accuracy Test with TagSLAM.
-            </li>
-            <li>Designed and built heavy-duty mechanical workbench.</li>
-          </ul>
-
-          <h4>Junior Contract Executive</h4>
-          <h5>Usaha Sarjana Sdn. Bhd.</h5>
-          <h6>May 2016 – Jan 2017</h6>
-          <ul>
-            <li>
-              Carried out construction project interim valuation and progress
-              claim for construction site office at projects of PNB 118 Warisan
-              Merdeka Tower, Ikea Tebrau, and Petronas RAPID Package 3.
-            </li>
-            <li>
-              Assisted Contract Manager in quantity survey for project tenders.
-            </li>
-            <li>
-              Resolved contractual disputes from sub-contractors at project
-              Petronas RAPID PKG 3.
-            </li>
-          </ul>
-          <div id="work-exp-content" class="container-fluid"></div>
-        </div>
+        <div class="col" id="work-exp-content" class="container-fluid"></div>
         <div class="col">
           <h2>Achievements</h2>
           <ul>
@@ -335,18 +308,21 @@
 
     <!-- Templates -->
     <script id="work-exp-template" type="text/x-handlebars-template">
+      <h2>Work Experience</h2>
       {{#each jobs}}
-      <div data-id="{{@index}}">
-        <h4>{{title}}</h4>
-        <h5>{{workplace}}</h5>
-        <h6>{{time}}</h6>
-        <ul>
-        {{#each duties}}
-          <li>
-            {{description}}
-          </li>
-        {{/each}}
-        </ul>
+      <div class="row">
+        <div data-id="{{@index}}">
+          <h4>{{title}}</h4>
+          <h5>{{workplace}}</h5>
+          <h6>{{time}}</h6>
+          <ul>
+          {{#each duties}}
+            <li>
+              {{description}}
+            </li>
+          {{/each}}
+          </ul>
+        </div>
       </div>
       {{/each}}
     </script>
@@ -360,6 +336,8 @@
     ></script>
     <!-- Masonry scripts-->
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script>
+      window.dispatchEvent(new Event('resize'));
+    </script>
   </body>
 </html>

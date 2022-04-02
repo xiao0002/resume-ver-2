@@ -110,6 +110,8 @@
               Petronas RAPID PKG 3.
             </li>
           </ul>
+
+          <div id="work-exp-content" class="container-fluid"></div>
         </div>
         <div class="col">
           <h2>Achievements</h2>
@@ -332,23 +334,21 @@
     </div>
 
     <!-- Templates -->
-    <script id="Work-exp-template" type="text/x-handlebars-template">
-      <div class="row">
-        {{#each jobs}}
-        <div data-id="{{@index}}">
-          <h4>{{title}}</h4>
-          <h5>{{workplace}}</h5>
-          <h6>{{time}}</h6>
-          <ul>
-          {{#each duties}}
-            <li>
-              {{description}}
-            </li>
-          {{/each}}
-          </ul>
-        </div>
+    <script id="work-exp-template" type="text/x-handlebars-template">
+      {{#each jobs}}
+      <div data-id="{{@index}}">
+        <h4>{{title}}</h4>
+        <h5>{{workplace}}</h5>
+        <h6>{{time}}</h6>
+        <ul>
+        {{#each duties}}
+          <li>
+            {{description}}
+          </li>
         {{/each}}
+        </ul>
       </div>
+      {{/each}}
     </script>
 
     <!-- Scripts -->

@@ -82,6 +82,7 @@
       </div>
 
       <div
+
         class="row row-cols-1 row-cols-md-2 g-4"
         data-masonry='{"percentPosition": true,  "itemSelector": ".col", "initLayout": true, "resize": true}'
       >
@@ -337,7 +338,7 @@
     <!-- Masonry scripts-->
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script>
-      window.dispatchEvent(new Event('resize'));
+      msnry.layout();
     </script>
   </body>
 </html>
